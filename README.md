@@ -47,7 +47,7 @@ Go ahead and `npm start` to see what we already have rendering in the browser.
 (The application will error on `npm start` until the `Comment` component is
 created and exported)
 
-#### `Comment` Component
+### `Comment` Component
 
 - Create a `Comment` component in the file, `Comment.js` within `src/` and don't forget to:
   - `import React, { Component } from 'react'` at the top of our file
@@ -65,16 +65,16 @@ created and exported)
 - Don't forget - we can unpack variable values directly with JSX by wrapping them
   in `{}`, i.e. `{this.props.commentText}`
 
-#### Take a Break
+### Take a Break
 
 - Look at something other than your computer screen for at least five minutes
 
-#### `ColorBox` Component
+### `ColorBox` Component
 
 - Should expect a single prop (an opacity value), which can be used in the
   component via: `this.props.opacity`. This prop is first passed in `src/App.js`
 - If the opacity value _is greater than or equal to 0.2_:
-  - the `ColorBox` component should render another `ColorBox` inside itself 
+  - the `ColorBox` component should render another `ColorBox` inside itself
     (recursive components!)
   - an opacity prop should be passed to the child
   - the passed opacity prop should be reduced by 0.1
@@ -83,7 +83,7 @@ created and exported)
     `ColorBoxes` rendering!)
   - instead, the render method should return `null`
 
-##### Hint on ColorBox
+#### Hint on ColorBox
 
 - **Watch out** for endless recursion! If your `ColorBox` component has no break
   condition to stop it from always rendering another `ColorBox`, your browser will
@@ -96,15 +96,17 @@ created and exported)
   directly in the `render()` block. In the example below, the `render()` method is returning
   the evaluation of a ternary operator. If the expression `this.props.value > 100` evaluates to be true, the entire ternary expression (and thus, the return value of `render()`) evaluates to be null, otherwise, `render()` will return some JSX.
 
-```js
-import React, { Component } from 'react';
+```jsx
+import React, { Component } from "react";
 
 export default class Example extends Component {
   render() {
     const newValue = this.props.value * 2;
-    return this.props.value > 100 ? null : ( <div>
+    return this.props.value > 100 ? null : (
+      <div>
         <Example value={newValue} />
-      </div>)
+      </div>
+    );
   }
 }
 ```
