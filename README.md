@@ -83,8 +83,13 @@ created and exported)
     `ColorBoxes` rendering!)
   - instead, the render method should return `null`
 
-#### Hint on ColorBox
+#### Hints on ColorBox
 
+- While the idea of recursive components may seem complicated at first, we know
+  that React components can have child components rendered inside them. That's
+  exactly what's happening here. The only difference is that the child component
+  happens to be the same as the component that rendered it. There's no reason
+  you can't do that in React, **however...**
 - **Watch out** for endless recursion! If your `ColorBox` component has no break
   condition to stop it from always rendering another `ColorBox`, your browser will
   likely become non-responsive. **Pre-plan** how you are going to render the
@@ -93,8 +98,11 @@ created and exported)
   strange precision errors (try logging the opacity prop with each render). This
   is due to limitations with JavaScript float (number) types.
 - In order to render based on a conditional, you can write JavaScript logic
-  directly in the `render()` block. In the example below, the `render()` method is returning
-  the evaluation of a ternary operator. If the expression `this.props.value > 100` evaluates to be true, the entire ternary expression (and thus, the return value of `render()`) evaluates to be null, otherwise, `render()` will return some JSX.
+  directly in the `render()` block. In the example below, the `render()` method
+  is returning the evaluation of a ternary operator. If the expression
+  `this.props.value > 100` evaluates to be true, the entire ternary expression
+  (and thus, the return value of `render()`) evaluates to be null, otherwise,
+  `render()` will return some JSX.
 
 ```jsx
 import React, { Component } from "react";
